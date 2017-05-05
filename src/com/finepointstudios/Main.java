@@ -4,6 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
         // write your code here
+        int[] numbers = {100, 50, 70, 60, 80, 60};
+        Student student = new Student("Daniel", "Malone", 2, numbers);
+        char asdf = student.calculate();
+        System.out.println(asdf);
     }
 }
 
@@ -41,13 +45,32 @@ class Student extends Person {
     */
     Student(String firstName, String lastName, int id, int[] scores) {
         super(firstName, lastName, id);
+        testScores = scores;
     }
 
     /*
     *   Method Name: calculate
     *   @return A character denoting the grade.
     */
-    public String calculate() {
-        return "asdf";
+    public char calculate() {
+        int total = 0;
+        int i;
+        for (i = 0; i < testScores.length; i++) {
+            total += testScores[i];
+        }
+        int totalCalculated = total / i;
+//        System.out.println(totalCalculated);
+        if (totalCalculated >= 90 && totalCalculated <= 100) {
+            return 'O';
+        } else if (totalCalculated >= 80 && totalCalculated < 90) {
+            return 'E';
+        } else if (totalCalculated >= 70 && totalCalculated < 80) {
+            return 'A';
+        } else if (totalCalculated >= 55 && totalCalculated < 70) {
+            return 'P';
+        } else if (totalCalculated >= 40 && totalCalculated < 55) {
+            return 'D';
+        }
+        return 'T';
     }
 }
